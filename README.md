@@ -46,4 +46,4 @@ OpenShitTerm <shellname> <height_percentage>
 ```
 
 # note
-When we open a terminal window, only if we press the i, a, I, A... character we go into terminal mode. When we don't press one of these keys, we are in the normal mode which means we can run the nvim command as we want and remember that the tmode keysmap ara not useful.  And in tmode, the normal command of nvim are not useful, you need <C-\><C-N> to go back to normal mode or <C-\><C-O> to execute normal mode command. Please to loop up `:h terminal-emulator`
+When we open a terminal window, only if we press the i, a, I, A... character we go into terminal mode. When we don't press one of these keys, we are in the normal mode which means we can run the nvim command as we want and remember that the tmode keysmap ara not useful.  And in tmode, the normal command of nvim are not useful, you need `<C-\><C-N>` to go back to normal mode or `<C-\><C-O>` to execute normal mode command. Please to loop up `:h terminal-emulator`
