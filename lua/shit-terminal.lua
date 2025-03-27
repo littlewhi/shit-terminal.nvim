@@ -6,6 +6,10 @@ local te = {}
 function te.openTerminalBelow(shname, high)
 	high = high and high or te.high
 	shname = shname and shname or te.default_shell
+	if high < 0 or high > 1 then
+		print("shit-terminal: in openTerminalBelow function, the high percentage is not right: ", high, " it should be from 0 -> 1" )
+		return nil
+	end
 	local buf = vim.api.nvim_create_buf(false, true)
 	local h = vim.api.nvim_win_get_height(0)
 	local win = vim.api.nvim_open_win(buf, true, { win = 0, split = "below", height = math.floor(h * high) })
