@@ -13,6 +13,9 @@ function te.openTerminalBelow(shname, high)
 	local buf = vim.api.nvim_create_buf(false, true)
 	local h = vim.api.nvim_win_get_height(0)
 	local win = vim.api.nvim_open_win(buf, true, { win = 0, split = "below", height = math.floor(h * high) })
+	print(h)
+	print(high)
+	print( math.floor(h * high) )
 	vim.fn.termopen(shname)
 	return win
 end
@@ -24,6 +27,7 @@ local function default_config()
 	te.enable_map = true
 	te.leader = "<Leader>vi"
 end
+
 
 ---@description: setup
 ---@param opt table :
@@ -37,7 +41,7 @@ function te.setup(opt)
 	vim.api.nvim_create_user_command("OpenShitTermDef", function()
 		te.openTerminalBelow(te.default_shell, te.high)
 	end, { bang = true })
-	vim.api.nvim_create_user_command("OpenShitTerm", function(args) te.openTerminalBelow( args[1], tonumber(args[2], 10) ) end, {
+	vim.api.nvim_create_user_command("OpenShitTerm", function(ca) print(ca.fargs[1], ca.fargs[2]); te.openTerminalBelow( ca.fargs[1], tonumber(ca.fargs[2], 10) ) end, {
 		bang = true,
 		complete = function(ArgLead, CmdLine, CursorPos)
 			if string.match(string.sub(CmdLine, 1, CursorPos), "%s*OpenShitTerm%s*[^%s]+%s+") then
