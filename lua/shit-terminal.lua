@@ -13,9 +13,6 @@ function te.openTerminalBelow(shname, high)
 	local buf = vim.api.nvim_create_buf(false, true)
 	local h = vim.api.nvim_win_get_height(0)
 	local win = vim.api.nvim_open_win(buf, true, { win = 0, split = "below", height = math.floor(h * high) })
-	print(h)
-	print(high)
-	print( math.floor(h * high) )
 	vim.fn.termopen(shname)
 	return win
 end
